@@ -5,19 +5,12 @@
     <div class="content-wrapper">
         <div class="page-header">
             <h3 class="page-title">Data Master IKM</h3>
-            <nav aria-label="breadcrumb">
-                <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="#">Master Data</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">Data IKM</li>
-                </ol>
-            </nav>
         </div>
         <div class="row">
             <div class="col-lg-12 grid-margin stretch-card">
                 <div class="card">
                     <div class="card-body">
                         <div class="d-flex justify-content-between align-items-center mb-4">
-                            <h4 class="card-title">Daftar IKM</h4>
                             <button type="button" class="btn btn-primary">
                                 <i class="mdi mdi-plus"></i> Tambah Data
                             </button>
