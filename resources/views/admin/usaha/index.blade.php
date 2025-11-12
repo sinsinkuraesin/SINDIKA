@@ -2,9 +2,15 @@
 
 @section('content')
 <div class="main-panel">
-    <div class="content-wrapper">
-        <div class="page-header">
-            <h3 class="page-title">Data Master IKM</h3>
+    <div class="content-wrapper pb-0">
+        <div class="page-header flex-wrap">
+            <div class="header-right d-flex flex-wrap mt-2 mt-sm-0">
+                <div class="d-flex align-items-center">
+                    <a href="#">
+                        <p class="m-0 pr-3">Data usaha</p>
+                    </a>
+                </div>
+            </div>
         </div>
         <div class="row">
             <div class="col-lg-12 grid-margin stretch-card">
@@ -15,66 +21,22 @@
                                 <i class="mdi mdi-plus"></i> Tambah Data
                             </button>
                         </div>
+
                         <div class="table-responsive">
-                            <table class="table table-hover">
-                                <thead>
+                            <table class="table table-bordered table-striped align-middle">
+                                <thead class="table-primary text-center bold">
                                     <tr>
                                         <th>No</th>
-                                        <th>Tanggal</th>
-                                        <th>Badan Usaha</th>
-                                        <th>Perusahaan</th>
-                                        <th>Nama Pemilik</th>
-                                        <th>Alamat</th>
-                                        <th>Desa</th>
-                                        <th>Kecamatan</th>
-                                        <th>No. Telepon</th>
-                                        <th>Email</th>
-                                        <th>NIB</th>
-                                        <th>NPWP</th>
-                                        <th>KBLI</th>
-                                        <th>Jenis Produk</th>
-                                        <th>Skala</th>
-                                        <th>Label Industri</th>
-                                        <th>Jumlah TK</th>
-                                        <th>SPPIRT</th>
-                                        <th>Halal</th>
-                                        <th>Merk</th>
-                                        <th>SNI</th>
-                                        <th>Detail</th>
+                                        <th>Nama Usaha</th>
                                         <th>Aksi</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($masters as $master)
-
+                                    @foreach ($usahas as $usaha)
                                     <tr>
-                                        <td>{{ ++$i }}</td>
-                                        <td>{{ $master->tgl }}</td>
-                                        <td>{{ $master->bdn_usaha }}</td>
-                                        <td>{{ $master->perusahaan }}</td>
-                                        <td>{{ $master->nm_pemilik }}</td>
-                                        <td>{{ $master->jln }}</td>
-                                        <td>{{ $master->desa }}</td>
-                                        <td>{{ $master->kec}}</td>
-                                        <td>{{ $master->no_telp}}</td>
-                                        <td>{{ $master->email}}</td>
-                                        <td>{{ $master->nib}}</td>
-                                        <td>{{ $master->npwp}}</td>
-                                        <td>{{ $master->kbli}}</td>
-                                        <td>{{ $master->jns_produk}}</td>
-                                        <td>{{ $master->skala}}</td>
-                                        <td>{{ $master->label_industri}}</td>
-                                        <td>{{ $master->jml_tk}} Orang</td>
-                                        <td>{{ $master->sppirt}}</td>
-                                        <td>{{ $master->halal}}</td>
-                                        <td>{{ $master->merk}}</td>
-                                        <td>{{ $master->sni}}</td>
-                                        <td>
-                                            <button type="button" class="btn btn-info btn-sm">
-                                                <i class="mdi mdi-eye"></i>
-                                            </button>
-                                        </td>
-                                        <td>
+                                        <td class="text-center">{{ $loop->iteration }}</td>
+                                        <td>{{ $usaha->nama_usaha}}</td>
+                                        <td class="text-center">
                                             <div class="btn-group" role="group">
                                                 <button type="button" class="btn btn-success btn-sm">
                                                     <i class="mdi mdi-pencil"></i>
@@ -89,6 +51,7 @@
                                 </tbody>
                             </table>
                         </div>
+
                         <div class="d-flex justify-content-between align-items-center mt-4">
                             <div>
                                 Menampilkan 1-10 dari 100 data
@@ -113,6 +76,7 @@
                                 </ul>
                             </nav>
                         </div>
+
                     </div>
                 </div>
             </div>
@@ -121,10 +85,31 @@
 </div>
 @endsection
 
+@push('styles')
+<style>
+    /* Tambahkan pembeda visual antar baris dan header */
+    .table th {
+        background-color: #007bff !important;
+        color: white !important;
+        font-weight: 600;
+        border: 1px solid #dee2e6;
+        vertical-align: middle !important;
+    }
+
+    .table td {
+        border: 1px solid #dee2e6;
+        vertical-align: middle !important;
+    }
+
+    .table tbody tr:hover {
+        background-color: #f5f5f5;
+    }
+</style>
+@endpush
+
 @push('scripts')
 <script>
     $(document).ready(function() {
-        // Initialize datatable
         $('.table').DataTable({
             scrollX: true,
             pageLength: 20,

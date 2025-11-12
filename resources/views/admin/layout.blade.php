@@ -6,21 +6,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <title>SINDIKA</title>
     <!-- plugins:css -->
-    <link rel="stylesheet" href="../assets/vendors/mdi/css/materialdesignicons.min.css">
-    <link rel="stylesheet" href="../assets/vendors/flag-icon-css/css/flag-icon.min.css">
-    <link rel="stylesheet" href="../assets/vendors/css/vendor.bundle.base.css">
+    <link rel="stylesheet" href="{{ asset('') }}assets/vendors/mdi/css/materialdesignicons.min.css">
+    <link rel="stylesheet" href="{{ asset('') }}assets/vendors/flag-icon-css/css/flag-icon.min.css">
+    <link rel="stylesheet" href="{{ asset('') }}assets/vendors/css/vendor.bundle.base.css">
 
     <!-- endinject -->
     <!-- Plugin css for this page -->
-    <link rel="stylesheet" href="../assets/vendors/jquery-bar-rating/css-stars.css" />
-    <link rel="stylesheet" href="../assets/vendors/font-awesome/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="{{ asset('') }}assets/vendors/jquery-bar-rating/css-stars.css" />
+    <link rel="stylesheet" href="{{ asset('') }}assets/vendors/font-awesome/css/font-awesome.min.css" />
     <!-- End plugin css for this page -->
     <!-- inject:css -->
     <!-- endinject -->
     <!-- Layout styles -->
-    <link rel="stylesheet" href="../assets/css/demo_1/style.css" />
+    <link rel="stylesheet" href="{{ asset('') }}assets/css/demo_1/style.css" />
     <!-- End layout styles -->
-    <link rel="shortcut icon" href="../assets/images/favicon.png" />
+    <link rel="shortcut icon" href="{{ asset('') }}assets/images/web.png" />
   </head>
   <body>
     <div class="container-scroller">
@@ -30,7 +30,7 @@
           <li class="nav-item nav-profile border-bottom">
             <a href="#" class="nav-link flex-column">
               <div class="nav-profile-image">
-                <img src="../assets/images/faces/face1.jpg" alt="profile" />
+                <img src="{{ asset('') }}assets/images/faces/face1.jpg" alt="profile" />
                 <!--change to offline or busy as needed-->
               </div>
               <div class="nav-profile-text d-flex ml-0 mb-3 flex-column">
@@ -40,19 +40,32 @@
             </a>
           </li>
           <li class="nav-item text-center" style="margin: 15px 0;">
-            <span class="nav-item-head d-block" style="padding: 10px;">Sistem Informasi Monitoring Data IKM Kota Cirebon</span>
+            <span class="nav-item-head d-block" style="padding: 10px;">SINDIKA</span>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="index.html">
+            <a class="nav-link" href="{{ url('/beranda-admin') }}">
               <i class="mdi mdi-compass-outline menu-icon"></i>
               <span class="menu-title">Dashboard</span>
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="{{ route('master.index') }}" aria-expanded="false" >
+            <a class="nav-link" href="" aria-expanded="false" >
                 <i class="mdi mdi-contacts menu-icon"></i>
                 <span class="menu-title">Data Master IKM</span>
             </a>
+            <div class="collapse" id="ui-basic">
+              <ul class="nav flex-column sub-menu">
+                <li class="nav-item">
+                  <a class="nav-link" href="">Data IKM</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="{{ route('industri.index') }}">Data Industri</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="{{ route('usaha.index') }}">Data Badan Usaha</a>
+                </li>
+              </ul>
+            </div>
           </li>
           <li class="nav-item">
             <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-controls="ui-basic">
@@ -91,7 +104,7 @@
               <span class="mdi mdi-chevron-double-left"></span>
             </button>
             <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
-              <a class="navbar-brand brand-logo-mini" href="index.html"><img src="../assets/images/logo-mini.svg" alt="logo" /></a>
+              <a class="navbar-brand brand-logo-mini" href="index.html"><img src="{{ asset('') }}assets/images/logo-mini.svg" alt="logo" /></a>
             </div>
             <ul class="navbar-nav navbar-nav-right">
               <li class="nav-item dropdown ml-3">
@@ -154,26 +167,26 @@
     </div>
     <!-- container-scroller -->
     <!-- plugins:js -->
-    <script src="../assets/vendors/js/vendor.bundle.base.js"></script>
+    <script src="{{ asset('') }}assets/vendors/js/vendor.bundle.base.js"></script>
     <!-- endinject -->
     <!-- Plugin js for this page -->
-    <script src="../assets/vendors/jquery-bar-rating/jquery.barrating.min.js"></script>
-    <script src="../assets/vendors/chart.js/Chart.min.js"></script>
-    <script src="../assets/vendors/flot/jquery.flot.js"></script>
-    <script src="../assets/vendors/flot/jquery.flot.resize.js"></script>
-    <script src="../assets/vendors/flot/jquery.flot.categories.js"></script>
-    <script src="../assets/vendors/flot/jquery.flot.fillbetween.js"></script>
-    <script src="../assets/vendors/flot/jquery.flot.stack.js"></script>
+    <script src="{{ asset('') }}assets/vendors/jquery-bar-rating/jquery.barrating.min.js"></script>
+    <script src="{{ asset('') }}assets/vendors/chart.js/Chart.min.js"></script>
+    <script src="{{ asset('') }}assets/vendors/flot/jquery.flot.js"></script>
+    <script src="{{ asset('') }}assets/vendors/flot/jquery.flot.resize.js"></script>
+    <script src="{{ asset('') }}assets/vendors/flot/jquery.flot.categories.js"></script>
+    <script src="{{ asset('') }}assets/vendors/flot/jquery.flot.fillbetween.js"></script>
+    <script src="{{ asset('') }}assets/vendors/flot/jquery.flot.stack.js"></script>
     <!-- End plugin js for this page -->
     <!-- inject:js -->
-    <script src="../assets/js/off-canvas.js"></script>
-    <script src="../assets/js/hoverable-collapse.js"></script>
-    <script src="../assets/js/misc.js"></script>
-    <script src="../assets/js/settings.js"></script>
-    <script src="../assets/js/todolist.js"></script>
+    <script src="{{ asset('') }}assets/js/off-canvas.js"></script>
+    <script src="{{ asset('') }}assets/js/hoverable-collapse.js"></script>
+    <script src="{{ asset('') }}assets/js/misc.js"></script>
+    <script src="{{ asset('') }}assets/js/settings.js"></script>
+    <script src="{{ asset('') }}assets/js/todolist.js"></script>
     <!-- endinject -->
     <!-- Custom js for this page -->
-    <script src="../assets/js/dashboard.js"></script>
+    <script src="{{ asset('') }}assets/js/dashboard.js"></script>
     <!-- End custom js for this page -->
   </body>
 </html>

@@ -2,16 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Master;
 use Illuminate\Http\Request;
 
-class MasterController extends Controller
+class AdminController extends Controller
 {
 
     public function index()
     {
-        $masters = Master::latest()->paginate(20);
-        return view('admin.master.index',compact('masters'))->with('i', (request()->input('page',1)-1)*20);
+        return view('admin.beranda');
     }
 
     public function create()
@@ -19,9 +17,6 @@ class MasterController extends Controller
         //
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
     {
         //

@@ -17,5 +17,6 @@ Route::get('/', function () {
     return view('admin.beranda');
 });
 
-Route::resource('master', App\Http\Controllers\MasterController::class);
-
+Route::get('/beranda-admin', [App\Http\Controllers\AdminController::class, 'index'])->name('admin.beranda');
+Route::resource('industri', App\Http\Controllers\IndustriController::class);
+Route::resource('usaha', App\Http\Controllers\UsahaController::class);

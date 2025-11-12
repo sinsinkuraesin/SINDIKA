@@ -5,28 +5,27 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Master extends Model
+class Perusahaan extends Model
 {
     use HasFactory;
-    protected $table = 'tbl_master';
+    protected $table = 'perusahaan';
     protected $fillable = [
-        'tgl',
-        'bdn_usaha',
+        'usaha_id',
+        'industri_id',
         'perusahaan',
-        'nm_pemilik',
+        'pemilik',
         'jln',
         'desa',
         'kec',
-        'no_tlp',
+        'telp',
         'email',
         'nib',
         'npwp',
         'kbli',
-        'jns_produk',
+        'produk',
         'skala',
-        'label_industri',
         'jml_tk',
-        'spprit',
+        'sppirt',
         'halal',
         'merk',
         'sni',
