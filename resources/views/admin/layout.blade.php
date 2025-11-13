@@ -49,11 +49,12 @@
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="" aria-expanded="false" >
+            <a class="nav-link" data-toggle="collapse" href="#master-ikm" aria-controls="master-ikm">
                 <i class="mdi mdi-contacts menu-icon"></i>
                 <span class="menu-title">Data Master IKM</span>
+                <i class="menu-arrow"></i>
             </a>
-            <div class="collapse" id="ui-basic">
+            <div class="collapse" id="master-ikm">
               <ul class="nav flex-column sub-menu">
                 <li class="nav-item">
                   <a class="nav-link" href="">Data IKM</a>
@@ -68,12 +69,12 @@
             </div>
           </li>
           <li class="nav-item">
-            <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-controls="ui-basic">
+            <a class="nav-link" data-toggle="collapse" href="#klasifikasi-ikm" aria-controls="klasifikasi-ikm">
               <i class="mdi mdi-format-list-bulleted menu-icon"></i>
               <span class="menu-title">Data Klasifikasi IKM</span>
                 <i class="menu-arrow"></i>
             </a>
-            <div class="collapse" id="ui-basic">
+            <div class="collapse" id="klasifikasi-ikm">
               <ul class="nav flex-column sub-menu">
                 <li class="nav-item">
                   <a class="nav-link" href="pages/ui-features/buttons.html">Skala/Badan Usaha IKM</a>
