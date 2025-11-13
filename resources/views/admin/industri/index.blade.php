@@ -24,7 +24,7 @@
 
                         <div class="table-responsive">
                             <table class="table table-bordered table-striped align-middle">
-                                <thead class="table-primary text-center bold">
+                                <thead class="bg-primary text-white text-center bold">
                                     <tr>
                                         <th>No</th>
                                         <th>Nama Industri</th>
@@ -37,7 +37,7 @@
                                         <td class="text-center">{{ $loop->iteration }}</td>
                                         <td>{{ $industri->nama_industri}}</td>
                                         <td class="text-center">
-                                            <div class="btn-group" role="group">
+
                                                 <a href="{{ route('industri.edit', $industri->id) }}" class="btn btn-success btn-sm">
                                                     <i class="mdi mdi-pencil"></i>
                                                 </a>
@@ -88,3 +88,4 @@
     </div>
 </div>
 @endsection
+
