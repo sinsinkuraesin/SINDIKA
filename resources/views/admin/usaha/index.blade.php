@@ -7,7 +7,7 @@
             <div class="header-right d-flex flex-wrap mt-2 mt-sm-0">
                 <div class="d-flex align-items-center">
                     <a href="#">
-                        <p class="m-0 pr-3">Data usaha</p>
+                        <p class="m-0 pr-3">Data Jenis Usaha</p>
                     </a>
                 </div>
             </div>
@@ -17,33 +17,35 @@
                 <div class="card">
                     <div class="card-body">
                         <div class="d-flex justify-content-between align-items-center mb-4">
-                            <button type="button" class="btn btn-primary">
+                            <a href="{{ route('usaha.create') }}" class="btn btn-primary">
                                 <i class="mdi mdi-plus"></i> Tambah Data
-                            </button>
+                            </a>
                         </div>
 
                         <div class="table-responsive">
                             <table class="table table-bordered table-striped align-middle">
-                                <thead class="table-primary text-center bold">
+                                <thead class="bg-primary text-white text-center bold">
                                     <tr>
                                         <th>No</th>
                                         <th>Nama Usaha</th>
                                         <th>Aksi</th>
                                     </tr>
-                                </thead>
-                                <tbody>
+                                </thead><tbody>
                                     @foreach ($usahas as $usaha)
                                     <tr>
                                         <td class="text-center">{{ $loop->iteration }}</td>
                                         <td>{{ $usaha->nama_usaha}}</td>
                                         <td class="text-center">
-                                            <div class="btn-group" role="group">
-                                                <button type="button" class="btn btn-success btn-sm">
+                                                <a href="{{ route('usaha.edit', $usaha->id) }}" class="btn btn-success btn-sm">
                                                     <i class="mdi mdi-pencil"></i>
-                                                </button>
-                                                <button type="button" class="btn btn-danger btn-sm">
-                                                    <i class="mdi mdi-delete"></i>
-                                                </button>
+                                                </a>
+                                                <form action="{{ route('usaha.destroy', $usaha->id) }}" method="POST" style="display: inline;">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?')">
+                                                        <i class="mdi mdi-delete"></i>
+                                                    </button>
+                                                </form>
                                             </div>
                                         </td>
                                     </tr>
