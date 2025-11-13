@@ -88,38 +88,3 @@
     </div>
 </div>
 @endsection
-
-@push('styles')
-<style>
-    /* Tambahkan pembeda visual antar baris dan header */
-    .table th {
-        background-color: #007bff !important;
-        color: white !important;
-        font-weight: 600;
-        border: 1px solid #dee2e6;
-        vertical-align: middle !important;
-    }
-
-    .table td {
-        border: 1px solid #dee2e6;
-        vertical-align: middle !important;
-    }
-
-    .table tbody tr:hover {
-        background-color: #f5f5f5;
-    }
-</style>
-@endpush
-
-@push('scripts')
-<script>
-    $(document).ready(function() {
-        $('.table').DataTable({
-            scrollX: true,
-            pageLength: 20,
-            ordering: true,
-            searching: true
-        });
-    });
-</script>
-@endpush
