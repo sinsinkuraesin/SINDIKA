@@ -16,14 +16,14 @@
             <div class="col-lg-12 grid-margin stretch-card">
                 <div class="card">
                     <div class="card-body">
-                        <div class="d-flex justify-content-between align-items-center mb-2">
+                        <div class="d-flex justify-content-between align-items-center mb-3">
                             <a href="{{ route('usaha.create') }}" class="btn btn-primary">
                                 <i class="mdi mdi-plus"></i> Tambah Data
                             </a>
                         </div>
                         <form action="/carius" method="GET" style="max-width: 350px;">
                             @csrf
-                            <div class="input-group mb-2 position-relative">
+                            <div class="input-group mb-3 position-relative">
                                 <input type="text" name="kata"
                                     class="form-control bg-light"
                                     placeholder="Cari Jenis Usaha?" required
