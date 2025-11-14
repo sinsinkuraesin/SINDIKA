@@ -20,3 +20,6 @@ Route::get('/', function () {
 Route::get('/beranda-admin', [App\Http\Controllers\AdminController::class, 'index'])->name('admin.beranda');
 Route::resource('industri', App\Http\Controllers\IndustriController::class);
 Route::resource('usaha', App\Http\Controllers\UsahaController::class);
+
+Route::get('/cariin', [App\Http\Controllers\IndustriController::class, 'cariin'])->name('industri.cariin');
+Route::get('/carius', [App\Http\Controllers\UsahaController::class, 'carius'])->name('usaha.carius');
