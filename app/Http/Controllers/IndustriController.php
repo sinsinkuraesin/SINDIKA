@@ -13,6 +13,15 @@ class IndustriController extends Controller
         return view('admin.industri.index', compact('industris'));
     }
 
+    public function cariin(Request $request)
+    {
+        $kata = $request->input('kata');
+
+        $industris = Industri::where('nama_industri', 'LIKE', "%$kata%")->get();
+
+        return view('admin.industri.index', compact('industris'));
+    }
+
     public function create()
     {
         return view('admin.industri.create');

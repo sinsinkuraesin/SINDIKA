@@ -13,6 +13,15 @@ class UsahaController extends Controller
         return view('admin.usaha.index', compact('usahas'));
     }
 
+    public function carius(Request $request)
+    {
+        $kata = $request->input('kata');
+
+        $usahas = Usaha::where('nama_usaha', 'LIKE', "%$kata%")->get();
+
+        return view('admin.usaha.index', compact('usahas'));
+    }
+
     public function create()
     {
         return view('admin.usaha.create');

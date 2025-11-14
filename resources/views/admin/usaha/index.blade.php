@@ -16,12 +16,36 @@
             <div class="col-lg-12 grid-margin stretch-card">
                 <div class="card">
                     <div class="card-body">
-                        <div class="d-flex justify-content-between align-items-center mb-4">
+                        <div class="d-flex justify-content-between align-items-center mb-2">
                             <a href="{{ route('usaha.create') }}" class="btn btn-primary">
                                 <i class="mdi mdi-plus"></i> Tambah Data
                             </a>
                         </div>
+                        <form action="/carius" method="GET" style="max-width: 350px;">
+                            @csrf
+                            <div class="input-group mb-2 position-relative">
+                                <input type="text" name="kata"
+                                    class="form-control bg-light"
+                                    placeholder="Cari Jenis Usaha?" required
+                                    style="border-color: #0d2fb8;"
+                                    value="{{ request('kata') }}">
 
+                                <button class="btn btn-primary d-flex align-items-center" type="submit" style="border-top-left-radius: 0; border-bottom-left-radius: 0;">
+                                    <i class="mdi mdi-magnify" style="font-size: 18px;"></i>
+                                    Cari
+                                </button>
+                                @if(request('kata'))
+                                <a href="{{ route('usaha.index') }}" class="btn btn-transparent position-absolute" style="right: 80px; top: 6px; z-index: 2; padding: 0 10px; height: 32px; display: flex; align-items: center; border: none; box-shadow: none; background: transparent; border-radius: 50%;">
+                                    <i class="mdi mdi-close" style="font-size: 18px;"></i>
+                                </a>
+                                @endif
+                            </div>
+                        </form>
+                        @if ($message = Session::get('success'))
+                            <div class=" m-2 alert alert-primary">
+                                <p>{{ $message }}</p>
+                            </div>
+                        @endif
                         <div class="table-responsive">
                             <table class="table table-bordered table-striped align-middle">
                                 <thead class="bg-primary text-white text-center bold">
