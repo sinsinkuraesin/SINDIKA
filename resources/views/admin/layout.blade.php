@@ -126,7 +126,8 @@
                 </a>
                 <div class="collapse" id="klasifikasi-ikm">
                     <ul class="nav flex-column sub-menu">
-                        <li class="nav-item"><a class="nav-link" href="#">Skala/Badan Usaha IKM</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#">Badan Usaha IKM</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#">Skala Usaha IKM</a></li>
                         <li class="nav-item"><a class="nav-link" href="#">Kategori Jenis Industri</a></li>
                         <li class="nav-item"><a class="nav-link" href="#">Wilayah Penyebaran IKM</a></li>
                     </ul>
