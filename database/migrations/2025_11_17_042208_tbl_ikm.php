@@ -11,18 +11,19 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('perusahaan', function (Blueprint $table) {
+    Schema::create('ikm', function (Blueprint $table) {
             $table->id();
             $table->foreignId('usaha_id')->references('id')->on('usaha')->onDelete('cascade');
             $table->foreignId('industri_id')->references('id')->on('industri')->onDelete('cascade');
-            $table->string('perusahaan')->nullable();
-            $table->string('pemilik')->nullable();
-            $table->text('jln');
-            $table->string('desa');
-            $table->string('kec');
+            $table->date('tgl_input')->nullable();
+            $table->string('nm_perusahaan_')->nullable();
+            $table->string('nm_pemilik')->nullable();
+            $table->string('alamatpr');
+            $table->string('alamatpm');
             $table->string('telp')->nullable();
             $table->string('email')->nullable();
             $table->integer('nib')->nullable();
+            $table->text('dnib')->nullable();
             $table->integer('npwp')->nullable();
             $table->integer('kbli')->nullable();
             $table->string('produk')->nullable();
@@ -36,11 +37,8 @@ return new class extends Migration
         });
     }
 
-    /**
-     * Reverse the migrations.
-     */
     public function down(): void
     {
-        Schema::dropIfExists('perusahaans');
+        Schema::dropIfExists('ikm');
     }
 };

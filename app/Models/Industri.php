@@ -8,6 +8,13 @@ use Illuminate\Database\Eloquent\Model;
 class Industri extends Model
 {
     use HasFactory;
+
     protected $table = 'industri';
     protected $fillable = ['nama_industri'];
+
+    /** RELASI */
+    public function ikms()
+    {
+        return $this->hasMany(Ikm::class, 'industri_id');
+    }
 }
