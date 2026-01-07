@@ -9,7 +9,7 @@ class IndustriController extends Controller
 {
     public function index()
     {
-        $industris = Industri::all();
+        $industris = Industri::orderBy('nama_industri', 'asc')->get();
         return view('admin.industri.index', compact('industris'));
     }
 
@@ -17,7 +17,9 @@ class IndustriController extends Controller
     {
         $kata = $request->input('kata');
 
-        $industris = Industri::where('nama_industri', 'LIKE', "%$kata%")->get();
+        $industris = Industri::where('nama_industri', 'LIKE', "%{$kata}%")
+                            ->orderBy('nama_industri', 'asc')
+                            ->get();
 
         return view('admin.industri.index', compact('industris'));
     }
@@ -37,7 +39,9 @@ class IndustriController extends Controller
             'nama_industri' => $request->nama_industri,
         ]);
 
-        return redirect()->route('industri.index')->with('success', 'Industri berhasil ditambahkan.');
+        return redirect()
+            ->route('industri.index')
+            ->with('success', 'Industri berhasil ditambahkan.');
     }
 
     public function edit(Industri $industri)
@@ -55,12 +59,20 @@ class IndustriController extends Controller
             'nama_industri' => $request->nama_industri,
         ]);
 
-        return redirect()->route('industri.index')->with('success', 'Industri berhasil diperbarui.');
+        return redirect()
+            ->route('industri.index')
+            ->with('success', 'Industri berhasil diperbarui.');
     }
 
-    public function destroy(Industri $industri)
+    public function destroy($id)
     {
+        $industri = Industri::findOrFail($id);
+        $nama = $industri->nama_industri;
+
         $industri->delete();
-        return redirect()->route('industri.index')->with('success', 'Industri berhasil dihapus.');
+
+        return redirect()
+            ->route('industri.index')
+            ->with('success', 'Berhasil menghapus industri "' . $nama . '"');
     }
 }

@@ -39,28 +39,25 @@
             border-color: transparent transparent #ffffff transparent;
         }
 
-.content-wrapper {
+        .content-wrapper {
+            background-color: #f5f7ff !important;
+            padding: 1.2rem 1.2rem 1rem 1.2rem !important;
+        }
 
-    background-color: #f5f7ff !important; /* perbaikan: typo dibetulkan */
-   padding: 0.0rem 1.2rem 1rem 1.2rem !important;
-}
+        /* Samakan warna di area luar agar tidak putih */
+        .main-panel
+        .page-body-wrapper,
+        body {
+            background-color: #f5f7ff !important;
+        }
 
-
-/* Samakan warna di area luar agar tidak putih */
-.main-panel
-.page-body-wrapper,
-body {
-    background-color: #f5f7ff !important;
-}
-
-/* Bootstrap container kadang memberi padding */
-.container,
-.container-fluid,
-.row {
-    padding-left: 0 !important;
-    padding-right: 0 !important;
-}
-
+        /* Bootstrap container kadang memberi padding */
+        .container,
+        .container-fluid,
+        .row {
+            padding-left: 0 !important;
+            padding-right: 0 !important;
+        }
 
 
     </style>
@@ -99,19 +96,27 @@ body {
             </li>
 
             <li class="nav-item">
-                <a class="nav-link" data-toggle="collapse" href="#master-ikm">
+                <a class="nav-link" data-toggle="collapse" href="#master-ikm" aria-expanded="false" aria-controls="master-ikm">
                     <i class="mdi mdi-contacts menu-icon"></i>
                     <span class="menu-title">Data Master IKM</span>
                     <i class="menu-arrow"></i>
                 </a>
                 <div class="collapse" id="master-ikm">
                     <ul class="nav flex-column sub-menu">
-                        <li class="nav-item"><a class="nav-link" href="">Data IKM</a></li>
-                        <li class="nav-item"><a class="nav-link" href="{{ route('industri.index') }}">Data Industri</a></li>
-                        <li class="nav-item"><a class="nav-link" href="{{ route('usaha.index') }}">Data Badan Usaha</a></li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('ikm.index') }}">Data IKM</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('industri.index') }}">Data Industri</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('usaha.index') }}">Data Badan Hukum</a>
+                        </li>
                     </ul>
                 </div>
-            </li>
+            </li>rsdrdw
 
             <li class="nav-item">
                 <a class="nav-link" data-toggle="collapse" href="#klasifikasi-ikm">
@@ -121,7 +126,8 @@ body {
                 </a>
                 <div class="collapse" id="klasifikasi-ikm">
                     <ul class="nav flex-column sub-menu">
-                        <li class="nav-item"><a class="nav-link" href="#">Skala/Badan Usaha IKM</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#">Badan Usaha IKM</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#">Skala Usaha IKM</a></li>
                         <li class="nav-item"><a class="nav-link" href="#">Kategori Jenis Industri</a></li>
                         <li class="nav-item"><a class="nav-link" href="#">Wilayah Penyebaran IKM</a></li>
                     </ul>
@@ -264,6 +270,122 @@ body {
 <script src="{{ asset('assets/js/todolist.js') }}"></script>
 
 <script src="{{ asset('assets/js/dashboard.js') }}"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<script>
+/**
+ * KHUSUS UNTUK FORM DELETE
+ * tidak mengganggu reset / close / confirm lain
+ */
+document.addEventListener('submit', function (e) {
+
+    const form = e.target;
+
+    // hanya form delete
+    if (!form.classList.contains('form-delete')) return;
+
+    e.preventDefault();
+
+    const message = form.dataset.confirm || 'Apakah Anda yakin ingin menghapus data ini?';
+
+    Swal.fire({
+        title: 'Konfirmasi',
+        text: message,
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonText: 'Ya, hapus',
+        cancelButtonText: 'Batal',
+        reverseButtons: true
+    }).then((result) => {
+        if (result.isConfirmed) {
+
+            // 🔥 SUBMIT ASLI (TANPA EVENT)
+            HTMLFormElement.prototype.submit.call(form);
+        }
+    });
+
+});
+</script>
+
+<script>
+/**
+ * KHUSUS UNTUK LINK data-confirm (X / batal / kembali)
+ * TIDAK mengganggu delete
+ */
+document.addEventListener('click', function (e) {
+
+    const link = e.target.closest('a[data-confirm][data-redirect]');
+    if (!link) return;
+
+    e.preventDefault();
+
+    const message = link.dataset.confirm;
+    const redirectUrl = link.dataset.redirect;
+
+    Swal.fire({
+        title: 'Konfirmasi',
+        text: message,
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonText: 'Ya',
+        cancelButtonText: 'Batal',
+        reverseButtons: true
+    }).then((result) => {
+        if (result.isConfirmed) {
+            window.location.href = redirectUrl;
+        }
+    });
+
+});
+</script>
+
+<script>
+/**
+ * SWEETALERT FLASH MESSAGE
+ * untuk: success | error | warning | info
+ */
+document.addEventListener('DOMContentLoaded', function () {
+
+    @if (session('success'))
+        Swal.fire({
+             icon: 'success',
+            title: 'Berhasil',
+            html: `{!! session('success') !!}`,
+            timer: 1000,
+            showConfirmButton: false
+        });
+    @endif
+
+    @if (session('error'))
+        Swal.fire({
+            icon: 'error',
+            title: 'Gagal',
+            text: "{{ session('error') }}",
+        });
+    @endif
+
+    @if (session('warning'))
+        Swal.fire({
+            icon: 'warning',
+            title: 'Peringatan',
+            text: "{{ session('warning') }}",
+        });
+    @endif
+
+    @if (session('info'))
+        Swal.fire({
+            icon: 'info',
+            title: 'Informasi',
+            text: "{{ session('info') }}",
+        });
+    @endif
+
+});
+</script>
+
 
 </body>
 </html>

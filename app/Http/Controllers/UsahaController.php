@@ -9,7 +9,7 @@ class UsahaController extends Controller
 {
     public function index()
     {
-        $usahas = Usaha::all();
+        $usahas = Usaha::orderBy('nama_usaha', 'asc')->get();
         return view('admin.usaha.index', compact('usahas'));
     }
 
@@ -17,7 +17,9 @@ class UsahaController extends Controller
     {
         $kata = $request->input('kata');
 
-        $usahas = Usaha::where('nama_usaha', 'LIKE', "%$kata%")->get();
+        $usahas = Usaha::where('nama_usaha', 'LIKE', "%$kata%")
+                    ->orderBy('nama_usaha', 'asc')
+                    ->get();
 
         return view('admin.usaha.index', compact('usahas'));
     }
@@ -37,7 +39,7 @@ class UsahaController extends Controller
             'nama_usaha' => $request->nama_usaha,
         ]);
 
-        return redirect()->route('usaha.index')->with('success', 'Data usaha berhasil ditambahkan.');
+        return redirect()->route('usaha.index')->with('success', 'Badan hukum berhasil ditambahkan.');
     }
 
     public function edit($id)
@@ -57,14 +59,19 @@ class UsahaController extends Controller
             'nama_usaha' => $request->nama_usaha,
         ]);
 
-        return redirect()->route('usaha.index')->with('success', 'Data usaha berhasil diperbarui.');
+        return redirect()->route('usaha.index')->with('success', 'Badan hukum berhasil diperbarui.');
     }
 
     public function destroy($id)
     {
         $usaha = Usaha::findOrFail($id);
+        $nama = $usaha->nama_usaha;
+
         $usaha->delete();
-        return redirect()->route('usaha.index')->with('success', 'Data usaha berhasil dihapus.');
+
+        return redirect()
+            ->route('usaha.index')
+            ->with('success', 'Berhasil menghapus badan hukum "' . $nama . '"');
     }
 
 }

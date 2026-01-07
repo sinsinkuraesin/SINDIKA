@@ -1,69 +1,87 @@
 @extends('admin.layout')
 
 @section('content')
-<div class="main-panel">
-    <div class="content-wrapper pb-0">
-        <div class="page-header flex-wrap">
-            <div class="header-right d-flex flex-wrap mt-2 mt-sm-0">
-                <div class="d-flex align-items-center">
-                    <a href="#">
-                        <p class="m-0 pr-3">Data Industri</p>
-                    </a>
+
+<div class="card ikm-index-card" style="max-width:900px;margin:auto;">
+
+    {{-- HEADER --}}
+    <div class="card-header bg-primary text-white d-flex justify-content-between align-items-center py-3">
+        <h5 class="mb-0 font-weight-normal">
+            Edit Data Industri
+        </h5>
+
+        {{-- ICON BATAL --}}
+        <a href="#"
+            data-confirm="Batalkan edit data industri?"
+            data-redirect="{{ route('industri.index') }}"
+            style="color:#fff;font-size:20px;">
+            <i class="mdi mdi-close"></i>
+        </a>
+    </div>
+
+    <div class="card-body">
+
+        <form action="{{ route('industri.update', $industri->id) }}" method="POST">
+            @csrf
+            @method('PUT')
+
+            {{-- NAMA INDUSTRI --}}
+            <div class="row mb-4 align-items-center">
+                <div class="col-md-4 font-weight-bold">
+                    Nama Industri
+                </div>
+                <div class="col-md-8">
+                    <input type="text"
+                           name="nama_industri"
+                           class="form-control"
+                           value="{{ $industri->nama_industri }}"
+                           required>
                 </div>
             </div>
-        </div>
-        <div class="row">
-            <div class="col-lg-12 grid-margin stretch-card">
-                <div class="card">
-                    <div class="card-body">
-                        <form action="{{ route('industri.update', $industri->id) }}" method="POST">
-                            @csrf
-                            @method('PUT')
-                            <div class="mb-3">
-                                <label for="nama_industri" class="form-label">Nama Industri</label>
-                                <input type="text" class="form-control" id="nama_industri" name="nama_industri" value="{{ $industri->nama_industri }}" required>
-                            </div>
-                            <button type="submit" class="btn btn-primary">Simpan</button>
-                        </form>
-                    </div>
-                </div>
+
+            {{-- ACTION --}}
+            <div class="d-flex justify-content-end">
+                <button type="submit" class="btn btn-primary px-5">
+                    Simpan Perubahan
+                </button>
             </div>
-        </div>
+
+        </form>
+
     </div>
 </div>
-@endsection
 
+{{-- STYLE KONSISTEN --}}
 @push('styles')
 <style>
-    /* Tambahkan pembeda visual antar baris dan header */
-    .table th {
-        background-color: #007bff !important;
-        color: white !important;
-        font-weight: 600;
-        border: 1px solid #dee2e6;
-        vertical-align: middle !important;
-    }
+/* CARD */
+.ikm-index-card {
+    border-radius: 6px;
+    overflow: hidden;
+}
 
-    .table td {
-        border: 1px solid #dee2e6;
-        vertical-align: middle !important;
-    }
+/* FONT */
+.card-body,
+.form-control,
+.btn {
+    font-size: 14px;
+}
 
-    .table tbody tr:hover {
-        background-color: #f5f5f5;
-    }
+/* LABEL */
+.font-weight-bold {
+    font-weight: 600;
+}
+
+/* INPUT */
+.form-control {
+    border: 1px solid #000;
+}
+
+/* HEADER */
+.card-header h5 {
+    font-size: 16px;
+}
 </style>
 @endpush
 
-@push('scripts')
-<script>
-    $(document).ready(function() {
-        $('.table').DataTable({
-            scrollX: true,
-            pageLength: 20,
-            ordering: true,
-            searching: true
-        });
-    });
-</script>
-@endpush
+@endsection
